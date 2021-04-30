@@ -1,0 +1,34 @@
+{% load static %}
+<!-- About Info Row Start-->
+<div class="row about mb-70">
+
+    <div class="col-lg-8">
+        <!--Personal Intro-->
+        <h3 class="mb-20">Web Developer</h3>
+        <p>{{ user_details.description }}</p>
+        <!--Signature Image-->
+        <div class="signature mt-20">
+            <img src="{% static 'core/img/signature-white.png' %}" alt="my signature">
+        </div>
+    </div>
+
+    <!--Personal Info-->
+    <div class="col-lg-4">
+        <div class="about-info">
+            <h3 class="mb-20">Personal Information</h3>
+            <ul>
+                <li><span class="title">Name</span><span class="value">{{ user_details.fullname }}</span></li>
+                <!-- <li><span class="title">Age</span><span class="value">26 Years</span></li> -->
+                <!-- <li><span class="title">Residence</span><span class="value">New York, USA</span></li> -->
+                <!-- <li><span class="title">Address</span><span class="value">123 Lorem Ipsum</span></li> -->
+                <li><span class="title">Email</span><span class="value">{{ user_details.email }}</span></li>
+                <li><span class="title">Phone</span><span class="value">{{ user_details.Phone }}</span></li>
+                <li><span class="title">Freelance</span><span class="value">{{ user_details.freelance }}</span></li>
+            </ul>
+            <div class="resume-button mt-30">
+                <a class="btn-main" href="#">Download Resume</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About Info Row End-->

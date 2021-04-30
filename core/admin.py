@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import Skills, TechStack, WorkExperience
+from .models import Skill, TechStack, WorkExperience
 
 
-@admin.register(Skills)
-class SkillsAdmin(admin.ModelAdmin):
+@admin.register(Skill)
+class SkillAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')
     search_fields = ('name',)
 

@@ -1,0 +1,18 @@
+<ul class="education">
+    {% for skill in skills %}            
+        <!--Education Item-->
+        <li>
+            <span class="line-left"></span>
+            <div class="content">
+                <h4>{{ skill.name }}</h4>
+                <p class="info">
+                    {{ skill.description }}
+                </p>
+            </div>
+            <!-- <span class="year">
+                <span class="to">2014</span>
+                <span class="from">2013</span>
+            </span> -->
+        </li>
+    {% endfor %}
+</ul>

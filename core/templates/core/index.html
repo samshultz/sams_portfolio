@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load about_me_tags %}
+{% load core_tags %}
 
 {% block content %}
     <!--About Section Start-->
@@ -59,141 +60,127 @@
                 </div>
             </div>
             <!--Services Row End-->
-
-            <!--Clients Row Start-->
-            <div class="row clients mb-70">
-                <div class="col-md-12">
-                    <div class="subheading">
-                        <h3>Clients</h3>
-                    </div>
-                </div>
-
-                <div class="owl-carousel owl-theme">
-
-                    <!--Client Logo-->
-                    <div class="client-logo">
-                        <a href="#">
-                            <img src="img/clients/client-01.png" alt="">
-                        </a>
-                    </div>
-
-                    <!--Client Logo-->
-                    <div class="client-logo">
-                        <a href="#">
-                            <img src="img/clients/client-02.png" alt="">
-                        </a>
-                    </div>
-
-                    <!--Client Logo-->
-                    <div class="client-logo">
-                        <a href="#">
-                            <img src="img/clients/client-03.png" alt="">
-                        </a>
-                    </div>
-
-                    <!--Client Logo-->
-                    <div class="client-logo">
-                        <a href="#">
-                            <img src="img/clients/client-04.png" alt="">
-                        </a>
-                    </div>
-
-                    <!--Client Logo-->
-                    <div class="client-logo">
-                        <a href="#">
-                            <img src="img/clients/client-05.png" alt="">
-                        </a>
-                    </div>
-
-                    <!--Client Logo-->
-                    <div class="client-logo">
-                        <a href="#">
-                            <img src="img/clients/client-06.png" alt="">
-                        </a>
-                    </div>
-
-                    <!--Client Logo-->
-                    <div class="client-logo">
-                        <a href="#">
-                            <img src="img/clients/client-07.png" alt="">
-                        </a>
-                    </div>
-
-                    <!--Client Logo-->
-                    <div class="client-logo">
-                        <a href="#">
-                            <img src="img/clients/client-08.png" alt="">
-                        </a>
-                    </div>
-
-                    <!--Client Logo-->
-                    <div class="client-logo">
-                        <a href="#">
-                            <img src="img/clients/client-09.png" alt="">
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            <!--Clients Row End-->
-
-            <!--Testimonials Row Start-->
-            <div class="row testimonials mb-50">
-                <div class="col-md-12">
-                    <div class="subheading">
-                        <h3>Testimonials</h3>
-                    </div>
-                    <div class="owl-carousel owl-theme">
-
-                        <!--Testimonail Item-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content">
-                                <p>Ipsum ab necessitatibus numquam vitae quis. Nobis nostrum deserunt suscipit eos fugit. Consectetur dolorum temporibus facilis impedit exercitationem dignissimos.</p>
-                            </div>
-                            <div class="testimonial-meta">
-                                <img src="img/testimonials/author-1.jpg" alt="">
-                                <div class="meta-info">
-                                    <h4>Kate Fox</h4>
-                                    <p>Digital Marketing Executive</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Testimonail Item-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content">
-                                <p>Ipsum ab necessitatibus numquam vitae quis. Nobis nostrum deserunt suscipit eos fugit. Consectetur dolorum temporibus facilis impedit exercitationem dignissimos.</p>
-                            </div>
-                            <div class="testimonial-meta">
-                                <img src="img/testimonials/author-2.jpg" alt="">
-                                <div class="meta-info">
-                                    <h4>Emma Jones</h4>
-                                    <p>Creative Director</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Testimonail Item-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content">
-                                <p>Ipsum ab necessitatibus numquam vitae quis. Nobis nostrum deserunt suscipit eos fugit. Consectetur dolorum temporibus facilis impedit exercitationem dignissimos.</p>
-                            </div>
-                            <div class="testimonial-meta">
-                                <img src="img/testimonials/author-3.jpg" alt="">
-                                <div class="meta-info">
-                                    <h4>Jack Smith</h4>
-                                    <p>Marketing Director</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <!--Testimonials Row End-->
-
-            </div>
         </div>
     </section>
     <!--About Section Start-->
+
+    <!--Resume Section Start-->
+    <section id="resume" class="resume-section pt-page">
+        <div class="section-container">
+            <div class="page-heading">
+                <span class="icon"><i class="lnr lnr-license"></i></span>
+                <h2>My Resume.</h2>
+            </div>
+
+            <!--Education & Experience Row Start-->
+            <div class="row mb-20">
+
+                <!--Experience Column Start-->
+                <div class="col-lg-6">
+                    <div class="subheading">
+                        <h3>Experience</h3>
+                    </div>
+                    {% list_work_experiences %}
+                </div>
+                <!--Experience Column End-->
+
+                <!--Education Column Start-->
+                <div class="col-lg-6">
+                    <div class="subheading">
+                        <h3>Skills</h3>
+                    </div>
+
+                    {% list_skills %}
+                </div>
+                <!--Education Column End-->
+            </div>
+            <!--Education & Experience Row End-->
+
+
+            <!--Skills Row Start-->
+            <div class="row">
+
+                <!--Design Skills Column Start-->
+                <div class="col-lg-6 skills">
+                    <div class="subheading">
+                        <h3>Design Skills</h3>
+                    </div>
+
+                    <!--Design Skill Item-->
+                    <div class="skill-item">
+                        <h4 class="progress-title">Coral Draw</h4>
+                        <div class="progress">
+                            <div class="progress-bar" data-progress-value="91">
+                                <div class="progress-value">91%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Design Skill Item-->
+                    <div class="skill-item">
+                        <h4 class="progress-title">Photoshop</h4>
+                        <div class="progress">
+                            <div class="progress-bar" data-progress-value="82">
+                                <div class="progress-value">82%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Design Skill Item-->
+                    <div class="skill-item">
+                        <h4 class="progress-title">Illustrator</h4>
+                        <div class="progress">
+                            <div class="progress-bar" data-progress-value="94">
+                                <div class="progress-value">94%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Design Skills Column End-->
+
+                <!--Coding Skills Column Start-->
+                <div class="col-lg-6 skills">
+                    <div class="subheading">
+                        <h3>Coding Skills</h3>
+                    </div>
+
+                    <!--Coding Skill Item-->
+                    <div class="skill-item">
+                        <h4 class="progress-title">HTML5</h4>
+                        <div class="progress">
+                            <div class="progress-bar" data-progress-value="83">
+                                <div class="progress-value">83%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Coding Skill Item-->
+                    <div class="skill-item">
+                        <h4 class="progress-title">CSS3</h4>
+                        <div class="progress">
+                            <div class="progress-bar" data-progress-value="75">
+                                <div class="progress-value">75%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Coding Skill Item-->
+                    <div class="skill-item">
+                        <h4 class="progress-title">Javascript</h4>
+                        <div class="progress">
+                            <div class="progress-bar" data-progress-value="92">
+                                <div class="progress-value">92%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--Coding Skills Column End-->
+
+            </div>
+            <!--Skills Row End-->
+        </div>
+    </section>
+    <!--Resume Section End-->
 {% endblock content %}
     

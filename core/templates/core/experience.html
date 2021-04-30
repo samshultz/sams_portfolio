@@ -1,0 +1,19 @@
+<ul class="experience">
+    {% for experience in experiences %}
+        <!--Experience Item-->
+        <li>
+            <span class="line-left"></span>
+            <div class="content">
+                <h4>{{ experience.position }}</h4>
+                <h5>{{ experience.company }}</h5>
+                <p class="info">
+                    {{ experience.description }}
+                </p>
+            </div>
+            <span class="year">
+                <span class="to">{{ experience.start_date|date:"Y" }}</span>
+                <span class="from">{% if experience.end_date %}{{ experience.end_date|date:"Y" }}{% elif experience.currently_working_here %}Present{% endif %}</span>
+            </span>
+        </li>
+    {% endfor %}
+</ul>

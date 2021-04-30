@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
@@ -27,7 +28,7 @@ class AboutMe(models.Model):
     def __str__(self):
         return self.user.get_full_name()
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if not self.pk and AboutMe.objects.exists():
             raise ValidationError(_("There can only be one about me."))
         return super(AboutMe, self).save(*args, **kwargs)

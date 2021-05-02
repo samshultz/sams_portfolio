@@ -28,7 +28,7 @@ class WorkExperience(models.Model):
     currently_working_here = models.BooleanField(default=False)
 
     class Meta:
-        ordering = "start_date",\
+        ordering = "start_date",
 
     def __str__(self):
         return f"{self.position} at {self.company}"

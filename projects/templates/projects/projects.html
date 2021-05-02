@@ -1,0 +1,15 @@
+
+{% for project in projects %}
+    <!--Portfolio Item-->
+        <div class="item col-lg-4 col-sm-6 {% for category in project.categories.all %}{{ category }}{% if not forloop.last %} {% else %}{% endif %}{% endfor %}">
+        <a class="image-link" href="{{ project.image.url }}">
+            <figure>
+                <img src="{{ project.image.url }}" alt="">
+                <figcaption>
+                    <h4>{{ project.name }}</h4>
+                    <p>{{ project.description }}</p>
+                </figcaption>
+            </figure>
+        </a>
+    </div>
+{% endfor %}

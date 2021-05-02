@@ -1,0 +1,8 @@
+<div class="col-md-12 portfolio-filter text-center">
+    <ul>
+        <li class="active" data-filter="*">All</li>
+        {% for category in categories %}
+            <li data-filter=".{{ category }}">{{ category|capfirst }}</li>
+        {% endfor %}
+    </ul>
+</div>

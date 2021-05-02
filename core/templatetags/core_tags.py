@@ -19,3 +19,4 @@ def list_work_experiences(context, template="core/experience.html"):
 	experiences = WorkExperience.objects.all()[:5]
 	
 	return {'experiences': experiences, 'template': template}
+

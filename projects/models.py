@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 class Project(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    categories = models.ManyToManyField('projects.Category', related_name="projects")
 
     name = models.CharField(_('Name'), max_length=250)
     description = models.TextField()
@@ -16,5 +17,15 @@ class Project(models.Model):
         ordering = "-id",
 
     def __str__(self):
-        return f"{self.user.get_full_name()}'s Projects"
+        return f"{self.name}"
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=20)
+
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+        
+    def __str__(self):
+        return self.name

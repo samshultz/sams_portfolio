@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load about_me_tags %}
 {% load core_tags %}
+{% load projects_tags %}
 
 {% block content %}
     <!--About Section Start-->
@@ -182,5 +183,28 @@
         </div>
     </section>
     <!--Resume Section End-->
+                    <!--Porfolio Section Start-->
+                    <section id="portfolio" class="portfolio-section pt-page">
+                        <div class="section-container">
+    
+                            <!--Page Heading-->
+                            <div class="page-heading">
+                                <span class="icon"><i class="lnr lnr-briefcase"></i></span>
+                                <h2>Portfolio.</h2>
+                            </div>
+    
+                            <div class="row">
+                                <!--Portfolio Filter-->
+                                {% list_categories %}
+                            </div>
+    
+                            <!--Portfolio Items-->
+                            <div class="row portfolio-items mb-50">
+    
+                                {% list_projects %}
+                            </div>
+                        </div>
+                    </section>
+                    <!--Porfolio Section End-->
 {% endblock content %}
     

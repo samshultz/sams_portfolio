@@ -12,7 +12,7 @@ class AboutMe(models.Model):
         (AVAILABLE, 'Available'),
         (NOT_AVAILABLE, 'Not Available')
     )
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="about_me")
 
     description = models.TextField()
     phone = models.CharField(_("Phone Number"), max_length=50)

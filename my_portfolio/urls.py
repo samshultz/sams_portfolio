@@ -7,7 +7,7 @@ from core.views import HomepageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('contact/', include("contact.urls"), name='contact'),
     path('', HomepageView.as_view(), name="index"),
 ]
 

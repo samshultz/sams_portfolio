@@ -1,19 +1,23 @@
 from pathlib import Path
 import os
+import environ
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z23ds6xlhkfedkcd$w!y28pf)j3as7tiz@gjh_0gltz05jjf)y'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = ['samueltaiwo.com', 'localhost', '127.0.0.1']
 
@@ -113,7 +117,7 @@ WSGI_APPLICATION = 'my_portfolio.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get("DATABASE_URL", "postgres://judecleverly:eromosele@localhost:5432/portfolio"))
+    'default': dj_database_url.config(default=env('DATABASE_URL'))
 }
 
 
@@ -163,3 +167,30 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# EMAIL SETTINGS
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+# EMAIL_PORT = 587
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
+
+# SENTRY SETTINGS
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+sentry_sdk.init(
+    dsn=f"https://{env('SENTRY_KEY')}@o614120.ingest.sentry.io/5749588",
+    integrations=[DjangoIntegration()],
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
+)

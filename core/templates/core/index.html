@@ -2,6 +2,10 @@
 {% load about_me_tags %}
 {% load core_tags %}
 {% load projects_tags %}
+<<<<<<< HEAD
+=======
+{% load contact_tags %}
+>>>>>>> sam_contact_form
 
 {% block content %}
     <!--About Section Start-->
@@ -206,5 +210,65 @@
                         </div>
                     </section>
                     <!--Porfolio Section End-->
+                    <!--Contact Section Start-->
+                <section id="contact" class="contact-section pt-page">
+                    <div class="section-container">
+
+                        <!--Page Heading-->
+                        <div class="page-heading">
+                            <span class="icon"><i class="lnr lnr-envelope"></i></span>
+                            <h2>Contact Me.</h2>
+                        </div>
+
+                        <!--Form Row-->
+                        <div class="row mb-70">
+                            <div class="col-lg-8  offset-lg-2">
+                                <div class="subheading">
+                                    <h3>Let's Talk</h3>
+                                </div>
+
+                                <!--Form Start-->
+                                <form id="contact-form" method="post" action="{% url 'contact_me' %}">
+                                    {% csrf_token %}
+                                    {% render_contact_form %}
+                                </form>
+                                <!--Form End-->
+
+                            </div>
+                        </div>
+
+                        <!--Contact Info Row Start-->
+                        <div class="row contact-info mb-70">
+
+                            <!--Contact Info Item-->
+                            <div class="col-md-4 info-item">
+                                <span class="icon"><i class="fas fa-paper-plane"></i></span>
+                                <h5><a href="mailto:{{ about_me.email }}">{{ about_me.email }}</a></h5>
+                            </div>
+
+                            <!--Contact Info Item-->
+                            <div class="col-md-4 info-item">
+                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                                <h5>123 Lorem Ipsum, USA</h5>
+                            </div>
+
+                            <!--Contact Info Item-->
+                            <div class="col-md-4 info-item">
+                                <span class="icon"><i class="fas fa-phone"></i></span>
+                                <h5>{{ about_me.phone }}</h5>
+                            </div>
+
+                        </div>
+                        <!--Contact Info Row End-->
+
+                    </div>
+                    <!--Google Map Start-->
+                    <div class="google-map">
+                            <div id="map" data-latitude="-37.817214" data-longitude="144.955925" data-zoom="15"></div>
+                    </div>
+                    <!--Google Map End-->
+                </section>
+                <!--Contact Section End-->
+
 {% endblock content %}
     

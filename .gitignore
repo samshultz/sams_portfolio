@@ -127,7 +127,8 @@ ENV/
 env.bak/
 venv.bak/
 pythonenv*
-
+cert.key
+cert.crt
 # Spyder project settings
 .spyderproject
 .spyproject

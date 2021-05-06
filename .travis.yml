@@ -15,5 +15,6 @@ branches:
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
+  run: "python manage.py migrate"
   app:
     master: samueltaiwo

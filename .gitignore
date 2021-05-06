@@ -178,7 +178,7 @@ Thumbs.db
 # Translations
 
 # Django stuff:
-
+static/
 # Flask stuff:
 
 # Scrapy stuff:

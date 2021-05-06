@@ -10,3 +10,9 @@ script:
 branches:
   only:
     - master
+deploy:
+  provider: heroku
+  api_key:
+    secure: 49d3efc7-ade1-4180-814c-5aa078cef4d2
+  app:
+    master: samueltaiwo

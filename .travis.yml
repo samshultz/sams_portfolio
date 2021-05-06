@@ -12,7 +12,6 @@ branches:
     - master
 deploy:
   provider: heroku
-  api_key:
-    secure: 49d3efc7-ade1-4180-814c-5aa078cef4d2
+  api_key: $HEROKU_API_KEY
   app:
     master: samueltaiwo

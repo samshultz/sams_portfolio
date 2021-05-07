@@ -13,8 +13,8 @@ def setup_browser():
     capabilities = DesiredCapabilities.FIREFOX.copy()
     username = os.environ["SAUCE_USERNAME"]
     access_key = os.environ["SAUCE_ACCESS_KEY"]
-    capabilities["tunnel-identifier"] = os.environ["TRAVIS_JOB_NUMBER"]
-    hub_url = "%s:%s@localhost:4445" % (username, access_key)
+    capabilities["tunnel-identifier"] = os.environ.get("TRAVIS_JOB_NUMBER", 20.1)
+    hub_url = f"{username}:{access_key}@ondemand.eu-central-1.saucelabs.com:443"
     browser = webdriver.Remote(desired_capabilities=capabilities, command_executor="http://%s/wd/hub" % hub_url)
 
     return browser

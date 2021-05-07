@@ -2,9 +2,11 @@
 {% for project in projects %}
     <!--Portfolio Item-->
         <div class="item col-lg-4 col-sm-6 {% for category in project.categories.all %}{{ category }}{% if not forloop.last %} {% else %}{% endif %}{% endfor %}">
-        <a class="image-link" href="{{ project.image.url }}">
+        <a class="image-link" href="{% if project.image %}{{ project.image.url }}{% endif %}">
             <figure>
-                <img src="{{ project.image.url }}" alt="">
+                {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="">
+                {% endif %} 
                 <figcaption>
                     <h4><a class="image-link" href="{{ project.url }}">{{ project.name }}</a></h4>
                     <p>{{ project.description }}</p>

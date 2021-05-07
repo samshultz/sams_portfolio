@@ -1,5 +1,9 @@
 {% load widget_tweaks %}
-<div class="row">    
+
+    
+    
+<div class="row">   
+     
     {% for field in contact_form %}
         <div class="{% if field.name == 'message' %}col-md-12 mb-30{% else %}col-md-6 mb-50{% endif %}">
             <span class="input">

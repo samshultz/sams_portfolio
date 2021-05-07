@@ -1,6 +1,12 @@
-import pytest
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+
+from django.template import Context, Template
+from selenium import webdriver
+import time
+
+from django_webtest import WebTest
+import pytest
 
 from .models import AboutMe
 
@@ -34,3 +40,27 @@ def test_email_property_return_email(about_me, db):
 
 def test_fullname_property_return_fullname(about_me, db):
     assert about_me.fullname == "John Doe"
+
+def test_show_personal_details_templatetag(db, about_me):
+    context = Context({'title': 'my_title'})
+    template_to_render = Template(
+        '{% load about_me_tags %}'
+        '{% show_personal_details %}'
+    )
+    rendered_template = template_to_render.render(context)
+    assert "489478848" in rendered_template
+
+
+def test_user_details_display_on_page(about_me, db, django_app):
+    browser = webdriver.Firefox()
+    browser.get("http://localhost:8000/")
+    time.sleep(5)
+
+    about = browser.find_element_by_id('about-menu-item')
+    about.click()
+    time.sleep(5)
+    name = browser.find_element_by_id('name-box').text
+    assert name != ""
+    assert "Personal Information" in browser.page_source
+    time.sleep(3)
+    browser.quit()

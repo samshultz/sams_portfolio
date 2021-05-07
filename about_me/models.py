@@ -17,6 +17,8 @@ class AboutMe(models.Model):
     description = models.TextField()
     phone = models.CharField(_("Phone Number"), max_length=50)
     freelance = models.CharField(choices=FREELANCE_CHOICES, default=AVAILABLE, max_length=13)
+    photo = models.ImageField(upload_to="uploads/", blank=True, null=True)
+    cv = models.FileField(upload_to="uploads/", blank=True, null=True)
 
     
     class Meta:

@@ -228,8 +228,16 @@
                                 </div>
 
                                 <!--Form Start-->
-                                <form id="contact-form" method="post" action="{% url 'contact_me' %}">
+                                <form id="contact-form" method="post" action="{% url 'contact_me' %}" novalidate>
                                     {% csrf_token %}
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}">
+                                                {{ message|safe }}
+                                            <a href="#" class="close">x</a>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
                                     {% render_contact_form %}
                                 </form>
                                 <!--Form End-->

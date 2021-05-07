@@ -6,10 +6,7 @@
         <!--Personal Intro-->
         <h3 class="mb-20">Web Developer</h3>
         <p>{{ user_details.description }}</p>
-        <!--Signature Image-->
-        <div class="signature mt-20">
-            <img src="{% static 'core/img/signature-white.png' %}" alt="my signature">
-        </div>
+        
     </div>
 
     <!--Personal Info-->
@@ -17,7 +14,7 @@
         <div class="about-info">
             <h3 class="mb-20">Personal Information</h3>
             <ul>
-                <li><span class="title">Name</span><span class="value">{{ user_details.fullname }}</span></li>
+                <li><span class="title">Name</span><span class="value" id="name-box">{{ user_details.fullname }}</span></li>
                 <!-- <li><span class="title">Age</span><span class="value">26 Years</span></li> -->
                 <!-- <li><span class="title">Residence</span><span class="value">New York, USA</span></li> -->
                 <!-- <li><span class="title">Address</span><span class="value">123 Lorem Ipsum</span></li> -->
@@ -25,9 +22,11 @@
                 <li><span class="title">Phone</span><span class="value">{{ user_details.phone }}</span></li>
                 <li><span class="title">Freelance</span><span class="value">{{ user_details.freelance }}</span></li>
             </ul>
+            {% if user_details.cv %}
             <div class="resume-button mt-30">
-                <a class="btn-main" href="#">Download Resume</a>
+                <a class="btn-main" href="{{ user_details.cv.url }}" download="{{ user_details.cv.url }}">Download Resume</a>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

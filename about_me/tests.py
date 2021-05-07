@@ -1,9 +1,12 @@
+import time
+
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
 from django.template import Context, Template
+
 from selenium import webdriver
-import time
+from selenium.webdriver.firefox.options import Options
 
 from django_webtest import WebTest
 import pytest
@@ -52,7 +55,10 @@ def test_show_personal_details_templatetag(db, about_me):
 
 
 def test_user_details_display_on_page(about_me, db, django_app):
-    browser = webdriver.Firefox()
+    options = Options()
+    options.add_argument('-headless')
+
+    browser = webdriver.Firefox(firefox_options=options)
     browser.get("http://localhost:8000/")
     time.sleep(5)
 

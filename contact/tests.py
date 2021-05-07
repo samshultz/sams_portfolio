@@ -1,3 +1,4 @@
+import os
 import time
 import pytest
 
@@ -9,8 +10,12 @@ from selenium import webdriver
 @pytest.fixture
 def setup_browser():
 
-    browser = webdriver.Chrome()
-    browser.get("http://localhost:8000/")
+    username = os.environ["SAUCE_USERNAME"]
+    access_key = os.environ["SAUCE_ACCESS_KEY"]
+    capabilities["tunnel-identifier"] = os.environ["TRAVIS_JOB_NUMBER"]
+    hub_url = "%s:%s@localhost:4445/" % (username, access_key)
+    browser = webdriver.Remote(desired_capabilities=capabilities, command_executor="http://%s/wd/hub" % hub_url)
+
     return browser
 
 

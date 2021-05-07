@@ -56,14 +56,12 @@ def test_show_personal_details_templatetag(db, about_me):
 
 def test_user_details_display_on_page(about_me, db, django_app):
     
-    # username = os.environ["SAUCE_USERNAME"]
-    # access_key = os.environ["SAUCE_ACCESS_KEY"]
-    # capabilities["tunnel-identifier"] = os.environ["TRAVIS_JOB_NUMBER"]
-    # hub_url = "%s:%s@localhost:4445" % (username, access_key)
-    # driver = webdriver.Remote(desired_capabilities=capabilities, command_executor="http://%s/wd/hub" % hub_url)
+    username = os.environ["SAUCE_USERNAME"]
+    access_key = os.environ["SAUCE_ACCESS_KEY"]
+    capabilities["tunnel-identifier"] = os.environ["TRAVIS_JOB_NUMBER"]
+    hub_url = "%s:%s@localhost:4445/" % (username, access_key)
+    browser = webdriver.Remote(desired_capabilities=capabilities, command_executor="http://%s/wd/hub" % hub_url)
 
-    browser = webdriver.Chrome()
-    browser.get("http://localhost:8000/")
     time.sleep(5)
 
     about = browser.find_element_by_id('about-menu-item')

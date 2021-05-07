@@ -6,7 +6,6 @@ services:
 install:
     - pip install -r requirements.txt
 before_script:
-    - sudo apt-get install firefox-geckodriver
     - python manage.py migrate
     - python manage.py collectstatic --no-input
     - "export DISPLAY=:99.0"

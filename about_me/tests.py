@@ -55,7 +55,7 @@ def test_show_personal_details_templatetag(db, about_me):
 
 
 def test_user_details_display_on_page(about_me, db, django_app):
-    
+    capabilities = {}
     username = os.environ["SAUCE_USERNAME"]
     access_key = os.environ["SAUCE_ACCESS_KEY"]
     capabilities["tunnel-identifier"] = os.environ["TRAVIS_JOB_NUMBER"]

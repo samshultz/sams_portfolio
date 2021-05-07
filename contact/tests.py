@@ -5,15 +5,11 @@ from django.template import Context, Template
 from django_webtest import WebTest
 
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
-
 
 @pytest.fixture
 def setup_browser():
-    options = Options()
-    options.add_argument('-headless')
 
-    browser = webdriver.Firefox(firefox_options=options)
+    browser = webdriver.Chrome()
     browser.get("http://localhost:8000/")
     return browser
 

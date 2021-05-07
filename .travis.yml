@@ -3,6 +3,9 @@ python:
   - 3.8
 services:
     - postgresql
+before_install:
+    - # start your web application and listen on `localhost`
+    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 install:
     - pip install -r requirements.txt
 before_script:
@@ -22,7 +25,7 @@ addons:
   sauce_connect:
     username: "samshultz"
     access_key: "15185d64-b5c8-44cc-afb9-c933dc1115f6"
-  firefox: latest
+  chrome: stable
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY

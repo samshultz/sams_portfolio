@@ -13,8 +13,19 @@ class Skill(models.Model):
     def __str__(self):
         return self.name
 
+class StackCategory(models.Model):
+    name = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name = "stack category"
+        verbose_name_plural = "stack categories"
+
+    def __str__(self):
+        return self.name
+
 
 class TechStack(models.Model):
+    category = models.ForeignKey(StackCategory, related_name="stacks", on_delete=models.DO_NOTHING)
     name = models.CharField(max_length=50)
 
     def __str__(self):

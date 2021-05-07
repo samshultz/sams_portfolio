@@ -3,7 +3,7 @@ import pytest
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
-from core.models import WorkExperience, Skill, TechStack
+from core.models import WorkExperience, Skill, TechStack, StackCategory
 
 def test_experience_start_date_with_future_date_returns_error(db):
     today = datetime.date.today()
@@ -95,5 +95,13 @@ def test_str_representation_of_skill(db):
     assert "Web development" == str(skill)
 
 def test_str_representation_of_tech_stack(db):
-    stack = TechStack.objects.create(name="HTML")
+    stack_cat = StackCategory.objects.create(name="Backend")
+    stack = TechStack.objects.create(name="HTML", category=stack_cat)
     assert "HTML" == str(stack)
+
+def test_str_representation_of_stack_category(db):
+    stack_cat = StackCategory.objects.create(name="Backend")
+    assert "Backend" == str(stack_cat)
+
+def test_verbose_name_plural_of_stack_cat(db):
+    assert "stack categories" == StackCategory._meta.verbose_name_plural

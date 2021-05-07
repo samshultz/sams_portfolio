@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Skill, TechStack, WorkExperience
+from .models import Skill, TechStack, WorkExperience, StackCategory
 
 
 @admin.register(Skill)
@@ -8,6 +8,9 @@ class SkillAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')
     search_fields = ('name',)
 
+@admin.register(StackCategory)
+class StackCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
 
 @admin.register(TechStack)
 class TechStackAdmin(admin.ModelAdmin):

@@ -16,11 +16,14 @@ script:
 branches:
   only:
     - master
+env:
+  global:
+    - MOZ_HEADLESS=1
 addons:
   sauce_connect:
     username: "samshultz"
     access_key: "15185d64-b5c8-44cc-afb9-c933dc1115f6"
-  chrome: stable
+  firefox: latest
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
